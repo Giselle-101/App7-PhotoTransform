@@ -51,13 +51,13 @@
 /* detectVerticalSquash & drawImageIOSFix = are functions that are critical due to a flaw in the iPhone camera software that squishes any photos displayed on an HTML5 canvas element. https://github.com/stomita/ios-imagefile-megapixel
 */
  function detectVerticalSquash(img) {
-  var iw = img.naturalWidth, ih = img.naturalHeight;
-  var canvas = document.createElement('canvas');
-  canvas.width = 1;
-  canvas.height = ih;
-  var ctx = canvas.getContext('2d');
-  ctx.drawImage(img, 0, 0);
-  var data = ctx.getImageData(0, 0, 1, ih).data;
+  var iw = img.naturalWidth, ih = img.naturalHeight; // Get width and height
+  var canvas = document.createElement('canvas'); // Create a temporary canvas that will be used as template
+  canvas.width = 1; // Only 1 pixel wide
+  canvas.height = ih; // Full height
+  var ctx = canvas.getContext('2d'); // Get context
+  ctx.drawImage(img, 0, 0);  // Draw image to temp canvas
+  var data = ctx.getImageData(0, 0, 1, ih).data; // Get image data
   var sy = 0;
   var ey = ih;
   var py = ih;
@@ -72,13 +72,14 @@
    py = (ey + sy) >> 1;
   }
   var ratio = (py / ih);
-  return (ratio===0)?1:ratio; // Return ratio for scaling fix }
+  return (ratio===0)?1:ratio; // Return ratio for scaling fix
+ }
 // Fix drawing squished images on iOS using vertical squash ratio
   function drawImageIOSFix(ctx, img, sx, sy, sw, sh, dx, dy, dw, dh) { // Detect vertical squash
   var vertSquashRatio = detectVerticalSquash(img);
   ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh / vertSquashRatio); // Draw image with corrected height
  }
-
+  
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
  window.onload = function() {
   var fileInput = document.getElementById('fileInput');
