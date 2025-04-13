@@ -52,7 +52,7 @@
 */
  function detectVerticalSquash(img) {
   var iw = img.naturalWidth, ih = img.naturalHeight; // Get width and height
-  var canvas = document.createElement('canvas'); // Create a temporary canvas that will be used as template
+  var canvas = document.createElement('canvas'); // Creates a temporary canvas that will be used as template
   canvas.width = 1; // Only 1 pixel wide
   canvas.height = ih; // Full height
   var ctx = canvas.getContext('2d'); // Get context
@@ -129,7 +129,7 @@
               context2.putImageData(blueImage, 0, 0);
           } 
        
-       // End of img.onload, rest is continuation of Dr. Riedel's code
+       // End of img.onload
         
         img.src = reader.result;
       } //  end of reader.onload
