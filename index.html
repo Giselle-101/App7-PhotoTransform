@@ -31,16 +31,16 @@
 -->
 
  <head>
-  <!-- Sets character coding for the document -->
-  <meta charset="utf-8">
+ <!-- Sets character coding for the document -->
+  <meta charset="utf-8"> 
   <!-- Page title shown in browser tab -->
-  <title>Photo Transform</title>
+  <title>Photo Transform</title> 
   <!-- Ensures page scales properly on mobile -->
-  <meta name="viewport" content="width=device-width, initial-scale=.7">
+  <meta name="viewport" content="width=device-width, initial-scale=.7"> 
   <!-- Allows app-like behavior on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">  
   <link rel="stylesheet" href="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css" />
-  <!-- Load jQuery and jQuery Mobile styles/scripts -->
+   <!-- Load jQuery and jQuery Mobile styles/scripts -->
   <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
   <script src="https://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 
@@ -79,7 +79,7 @@
   var vertSquashRatio = detectVerticalSquash(img);
   ctx.drawImage(img, sx, sy, sw, sh, dx, dy, dw, dh / vertSquashRatio); // Draw image with corrected height
  }
-  
+
 /* window.onload necessary to keep javascripts from running before the app gets a chance to load entirely. */
  window.onload = function() {
   var fileInput = document.getElementById('fileInput');
@@ -106,6 +106,7 @@
           /*  ++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
           /* PUT ANY CHANGES TO THE JAVASCRIPT HERE  */
+          
       // Get image data (pixel info) from the original canvas
               var imageData = context.getImageData(0, 0, canvas.width, canvas.height);
               var data = imageData.data; // Pixel data is in a 1D array
@@ -126,8 +127,9 @@
               }
         // Draw the blue-only image onto the second canvas
               context2.putImageData(blueImage, 0, 0);
-          }    
-        } // end of img.onload
+          } 
+       
+       // End of img.onload, rest is continuation of Dr. Riedel's code
         
         img.src = reader.result;
       } //  end of reader.onload
@@ -156,7 +158,7 @@
       </div>
       <div id="messageDisplayArea"></div>
       
-    <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
+      <canvas id="myCanvas" width=600 height=500 style="border:1px solid #d3d3d3;"></canvas>
       <script> /* This script initiates the cavas and puts the text on the canvas "myCanvas" */
         var canvas = document.getElementById('myCanvas');
         var context = canvas.getContext("2d");
@@ -174,6 +176,7 @@
      context2.fillText("Blue intensity image will go here", 10, 20);
   </script>
 </div>
+   
 
     </div><!-- /content -->
     <div data-role="footer" data-position="fixed">
@@ -182,3 +185,4 @@
   </div><!-- /page -->
  </body>
 </html>
+
